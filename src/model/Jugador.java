@@ -21,15 +21,15 @@ public class Jugador {
     }
 
     public void recibirCarta(Carta carta) {
-        mano.add(carta);
+        mano.add(carta);   // Añade una carta a la mano del jugador
     }
 
     public void mostrarMano() {
 
         System.out.println("\nMano de " + nombre);
-
+         
         for (Carta carta : mano) {
-            System.out.println(carta);
+            System.out.println(carta);    // Imprime cada carta
         }
     }
 }

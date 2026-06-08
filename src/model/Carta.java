@@ -20,6 +20,6 @@ public class Carta {
 
     @Override
     public String toString() {
-        return numero + " de " + palo;
+        return numero + " de " + palo;   // Formato de visualización
     }
 }
