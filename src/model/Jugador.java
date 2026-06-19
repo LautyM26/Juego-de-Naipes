@@ -24,6 +24,15 @@ public class Jugador {
         mano.add(carta);   // Añade una carta a la mano del jugador
     }
 
+    public Carta jugarCarta(){
+
+    Carta carta = mano.get(0);
+
+    mano.remove(0);
+
+    return carta;
+    }
+
     public void mostrarMano() {
 
         System.out.println("\nMano de " + nombre);
