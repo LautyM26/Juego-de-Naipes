@@ -21,24 +21,32 @@ public class Jugador {
     }
 
     public void recibirCarta(Carta carta) {
-        mano.add(carta);   // Añade una carta a la mano del jugador
+        mano.add(carta); // Añade una carta a la mano 
     }
 
-    public Carta jugarCarta(){
-
-    Carta carta = mano.get(0);
-
-    mano.remove(0);
-
-    return carta;
+    // Modificado para poder remover la carta exacta que elijas de la lista
+    public Carta jugarCarta(int indice) {
+        Carta carta = mano.get(indice);
+        mano.remove(indice);
+        return carta;
     }
 
+    // Método exclusivo para la CPU
+    public Carta jugarCartaAleatoria() {
+        int indiceAleatorio = (int) (Math.random() * mano.size());
+        Carta carta = mano.get(indiceAleatorio);
+        mano.remove(indiceAleatorio);
+        return carta;
+    }
+
+    // Diseño visual de tus cartas
     public void mostrarMano() {
-
-        System.out.println("\nMano de " + nombre);
-         
-        for (Carta carta : mano) {
-            System.out.println(carta);    // Imprime cada carta
+        System.out.println("\n┌─────────────────────────┐");
+        System.out.println("│       TUS CARTAS        │");
+        System.out.println("└─────────────────────────┘");
+        
+        for (int i = 0; i < mano.size(); i++) {
+            System.out.println("  " + (i + 1) + " -> [ " + mano.get(i) + " ]");
         }
     }
 }
