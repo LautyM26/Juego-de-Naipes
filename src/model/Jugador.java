@@ -7,7 +7,7 @@ public class Jugador {
     private String nombre;
     private ArrayList<Carta> mano;
 
-    public Jugador(String nombre) {
+    public Jugador(String nombre) {  // Inicializa las propiedades básicas del jugador y su mano vacia
         this.nombre = nombre;
         this.mano = new ArrayList<>();
     }
@@ -16,7 +16,7 @@ public class Jugador {
         return nombre;
     }
 
-    public ArrayList<Carta> getMano() {
+    public ArrayList<Carta> getMano() {  // Devuelve la lista dinámica de cartas que posee en ese instante
         return mano;
     }
 
@@ -39,7 +39,7 @@ public class Jugador {
         return carta;
     }
 
-    // Diseño visual de tus cartas
+    // Diseño visual de las cartas del jugador
     public void mostrarMano() {
         System.out.println("\n┌─────────────────────────┐");
         System.out.println("│       TUS CARTAS        │");

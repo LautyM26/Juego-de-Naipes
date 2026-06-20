@@ -1,5 +1,6 @@
 package model;
-//define los cuatro palos posibles de la baraja.
+// Define los cuatro palos posibles de la baraja española
+
 public enum Palo {
     ESPADA,
     BASTO,

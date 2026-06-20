@@ -5,7 +5,7 @@ import service.ReglasTruco;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner tecladoMain = new Scanner(System.in);
+        Scanner tecladoMain = new Scanner(System.in);  // Bucle operativo que mantiene corriendo el programa general
         int opcion = 0;
 
         do {
@@ -18,12 +18,12 @@ public class Main {
             System.out.println("=======================================");
             System.out.print("Selecciona una opcion: ");
 
-            if (tecladoMain.hasNextInt()) {
+            if (tecladoMain.hasNextInt()) {  // Previene fallos si se ingresan letras o caracteres especiales
                 opcion = tecladoMain.nextInt();
                 
                 switch (opcion) {
                     case 1:
-                        char respuesta;
+                        char respuesta;  // Permite encadenar partidas nuevas indefinidamente
                         do {
                             JuegoTruco juego = new JuegoTruco();
                             juego.iniciarPartida();
@@ -45,7 +45,7 @@ public class Main {
                     default:
                         System.out.println("Opcion invalida. Elegi entre 1, 2 o 3.");
                 }
-            } else {
+            } else {  // Limpia el buffer de entrada erroneo
                 tecladoMain.next(); 
                 System.out.println("Entrada invalida. Por favor, ingresa un numero.");
             }

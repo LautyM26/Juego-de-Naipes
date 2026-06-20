@@ -6,6 +6,8 @@ import model.Carta;
 import model.Jugador;
 import model.Palo;
 
+
+// Controlador central que coordina las acciones de la partida en curso
 public class JuegoTruco {
 
     private Baraja baraja;
@@ -15,13 +17,13 @@ public class JuegoTruco {
     private int puntosJ1 = 0;
     private int puntosCPU = 0;
 
-    public JuegoTruco() {
+    public JuegoTruco() {  // Prepara el escenario de juego instanciando los dos participantes
         baraja = new Baraja();
         jugador1 = new Jugador("Tú"); 
         cpu = new Jugador("CPU");
     }
 
-    @SuppressWarnings("resource")
+    @SuppressWarnings("resource")   // Ejecuta el flujo secuencial de barajar, repartir y controlar las 3 rondas
     public void iniciarPartida() {
         Scanner teclado = new Scanner(System.in);
         System.out.println("\n=======================================");
@@ -39,16 +41,16 @@ public class JuegoTruco {
             jugador1.mostrarMano();
             
             int opcion = -1;
-            // ESCUDO ANTI-ERRORES: Si ponés letras o números raros, no explota
+            // Si ponés letras o números raros no explota
             while (true) {
                 System.out.print("\n Elegí tu carta (1 a " + jugador1.getMano().size() + "): ");
                 if (teclado.hasNextInt()) {
                     opcion = teclado.nextInt();
                     if (opcion >= 1 && opcion <= jugador1.getMano().size()) {
-                        break; // El número es válido, salimos del bucle de control
+                        break; // El número es válido, salimos del bucle 
                     }
                 } else {
-                    teclado.next(); // Limpia la letra inválida (como la 't') para que no buclee infinito
+                    teclado.next(); //para que no buclee infinito
                 }
                 System.out.println(" Selección inválida. Por favor, ingresá un número correcto de la lista.");
             }
@@ -82,18 +84,18 @@ public class JuegoTruco {
         mostrarGanador(); 
     }
 
-    private void repartir(){
+    private void repartir(){  // Otorga de forma alternada 3 cartas de la baraja a cada participante
         for(int i = 0; i < 3; i++){
             jugador1.recibirCarta(baraja.siguienteCarta());
             cpu.recibirCarta(baraja.siguienteCarta());
         }
     }
-
+// Calcula y retorna el peso estrategico de una carta basado en las reglas del juego
     private int valorTruco(Carta carta) {
         int n = carta.getNumero();
         Palo palo = carta.getPalo();
 
-        // Configurado con tus enums en singular (ESPADA, BASTO, ORO, COPA)
+        
         if (n == 1 && palo == Palo.ESPADA) return 14;
         if (n == 1 && palo == Palo.BASTO) return 13;
         if (n == 7 && palo == Palo.ESPADA) return 12;
@@ -113,7 +115,7 @@ public class JuegoTruco {
         return 0;
     }
 
-    private int comparar(Carta c1, Carta c2){
+    private int comparar(Carta c1, Carta c2){ // Evalua las dos cartas jugadas e indica el ganador de la mesa por medio de enteros
         int valor1 = valorTruco(c1);
         int valor2 = valorTruco(c2);
 
@@ -121,7 +123,7 @@ public class JuegoTruco {
         if(valor1 < valor2) return -1;
         return 0; 
     }
-
+     // Compara el marcador de puntos acumulados para declarar al ganador definitivo
     private void mostrarGanador(){
         System.out.println("\n=======================================");
         System.out.println("            FIN DE LA MANO            ");

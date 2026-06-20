@@ -10,11 +10,11 @@ public class Carta {
         this.palo = palo;
     }
 
-    public int getNumero() {
+    public int getNumero() {  // Devuelve el numero de la carta
         return numero;
     }
 
-    public Palo getPalo() {
+    public Palo getPalo() {  // Devuelve el objeto Palo de la carta
         return palo;
     }
 

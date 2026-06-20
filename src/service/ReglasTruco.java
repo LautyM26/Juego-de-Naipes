@@ -2,7 +2,7 @@ package service;
 
 public class ReglasTruco {
 
-    
+    // Imprime la tabla estatica de posiciones de valor de las cartas del Truco
     public static void mostrarReglas() {
         System.out.println("\n------------------------------------------------");
         System.out.println("|         REGLAS Y JERARQUIA (TRUCO)           |");
@@ -30,7 +30,7 @@ public class ReglasTruco {
         try { 
             System.in.read(); 
         } catch (Exception e) {
-           
+           // Manejo de interrupcion de lectura por teclado
         }
     }
 }
